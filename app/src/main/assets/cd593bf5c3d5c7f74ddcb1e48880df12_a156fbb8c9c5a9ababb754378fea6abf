@@ -1,0 +1,36 @@
+'use strict';
+
+(function () {
+
+    function isIX() {
+        var isIphoneX = /iphone/gi.test(navigator.userAgent) && screen.height == 812 && screen.width == 375;
+        var isIphoneXS_Max = /iphone/gi.test(navigator.userAgent) && screen.height == 896 && screen.width == 414;
+        return isIphoneX || isIphoneXS_Max;
+    }
+
+    function getOs() {
+        var arr = navigator.userAgent.toLowerCase().split(' ');
+        var reg = /\d(_)\d/;
+        for (var i = 0; i < arr.length; i++) {
+            if (reg.test(arr[i])) {
+                return arr[i].split('_');
+            }
+        }
+        return false;
+    }
+    // if (isIX() && window.orientation != 0 && window.orientation != 180 && getOs()[0] >= 11) {
+    //     $("meta[name='viewport']").attr('content',
+    //         "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui,viewport-fit=contain"
+    //     );
+    // }
+    // if(isIX() && window.orientation != 0 && window.orientation != 180 && getOs()[0] >= 13){
+    //     $(document.body).addClass("safe-area");
+    //     $('html').css('font-size', document.documentElement.clientWidth / 750 * 625 + '%')        
+    // }
+    // let win = navigator.userAgent.toLowerCase();
+
+    // if(win.indexOf("ipad") > -1){
+    //     //$('.main').addClass('main_ipad');
+    // }
+    console.log(isIX());
+})();

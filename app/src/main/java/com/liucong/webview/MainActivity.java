@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
         webview.clearCache(true);
         webview.getSettings().setAppCacheEnabled(false);
         webview.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-        WebviewSettingProxy.setProxyKKPlus(webview, "192.168.1.102", 8888, "android.app.Application");
+        //WebviewSettingProxy.setProxyKKPlus(webview, "10.250.210.152", 8888, "android.app.Application");
         webview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -75,6 +75,40 @@ public class MainActivity extends Activity {
                         e.printStackTrace();
                     }
                 }
+
+
+
+                else if (url.equals("https://xy3d.res.netease.com/pc/zt/20190923143020/pkg/mobilenew_86caa75.js")) {
+                    try {
+                        Log.d(TAG, "shouldInterceptRequest: replace " + url);
+                        return new WebResourceResponse("text/javascript", "utf-8", getBaseContext().getAssets().open("289f67e870e7f69b6f02e109eba3cd8a_86caa750ad68a719ce779900ccc48512"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else if (url.equals("https://xy3d.res.netease.com/pc/zt/20190923143020/js/common/global_a156fbb.js")) {
+                    try {
+                        Log.d(TAG, "shouldInterceptRequest: replace " + url);
+                        return new WebResourceResponse("text/javascript", "utf-8", getBaseContext().getAssets().open("cd593bf5c3d5c7f74ddcb1e48880df12_a156fbb8c9c5a9ababb754378fea6abf"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else if (url.equals("https://xy3d.res.netease.com/pc/zt/20190923143020/js/common/common_d4e8b6d.js")) {
+                    try {
+                        Log.d(TAG, "shouldInterceptRequest: replace " + url);
+                        return new WebResourceResponse("text/javascript", "utf-8", getBaseContext().getAssets().open("e890b7ebd20e999f410953b7c6be45a2_d4e8b6d6e3ac51c710135a629831281d"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else if (url.equals("https://nie.res.netease.com/comm/js/zepto(mixNIE).last.js")) {
+                    try {
+                        Log.d(TAG, "shouldInterceptRequest: replace " + url);
+                        return new WebResourceResponse("text/javascript", "utf-8", getBaseContext().getAssets().open("6ab2152eaa5a0d83c76be79691efcec0_7da790187f5977dab7e87ee861f4a407"));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
                 /*
                 if(url.contains("new_file.js")){//加载指定.js时 引导服务端加载本地Assets/www文件夹下的cordova.js
                     try {
@@ -101,8 +135,9 @@ public class MainActivity extends Activity {
         Log.d(TAG, "button: start load....");
         //webview.loadUrl("file:////android_asset/index.html");
         //webview.loadUrl("https://www.baidu.com/");
-        webview.loadUrl("https://bh3.mihoyo.com/gl/character/detail/70?fullscreen=1&sign_type=2&authkey_ver=1&auth_appid=gl0429&authkey=A%2Fu%2FqMzOo25h4uxjT6HNUucRJoBB4j61HQ7EhExwRvL8bASgS3iC9JePgF0nKcQbzFbG899qJ99d%2F5z9s1H%2BO3tYaxC0fYrk1ZsRu0yV8xONrsxwnAg2JpRph5oIVcZJIpAoTMh1ku2GcNQnJzs4gjW7GeTcMyg2B9YI%2FKDObNYzXwHUTJAoD0QDYRzQXz3b3wIH5k3SqRIDatIMrMWsnsa625Ox1D1he5CM2jjaPbP5Qfj9Q3OwantlwnN6E2WiEvufiAmWPPSEIeS2nvqU7SwShqAUrnhYqt4nAyBwY%2Bpl0pLJrcmQDs8duWhPMZePSCMvBcoDuamhPsnpLRj7LynL11qhDqqcnJE%2FbKI%2B1JM7Ko6vCpbmu5axENJQEm2Cr7kPx%2BluiFucVwvWEwA5IdssKiAztTTAWzNllH3QVm13XmZ1dwgnB1E0sAGCEaeEObO7G5CjAU3Zh6QuUsJ10sfXkTP2focqJN5KIB4ZMrvH3os51sDhpZ2dMxRNH0e7mV%2F128f2dOXenfNJrQnsRuQQFenGVblzyqQLkxn4Axd%2Bo7ujjdQNEEwBmAwWeuONoQvyBA1m2OqeW3RJvtW%2BrKX9V3iORbMwvPNternWBJr0IoBiL3MQhDHIrXYIdb%2BczmjFKIobKQPBZEcGYgiUK2kD8AbWX3VMNQG21bjtsGs%3D&lang=zh-CN");
+        //webview.loadUrl("https://bh3.mihoyo.com/gl/character/detail/70?fullscreen=1&sign_type=2&authkey_ver=1&auth_appid=gl0429&authkey=A%2Fu%2FqMzOo25h4uxjT6HNUucRJoBB4j61HQ7EhExwRvL8bASgS3iC9JePgF0nKcQbzFbG899qJ99d%2F5z9s1H%2BO3tYaxC0fYrk1ZsRu0yV8xONrsxwnAg2JpRph5oIVcZJIpAoTMh1ku2GcNQnJzs4gjW7GeTcMyg2B9YI%2FKDObNYzXwHUTJAoD0QDYRzQXz3b3wIH5k3SqRIDatIMrMWsnsa625Ox1D1he5CM2jjaPbP5Qfj9Q3OwantlwnN6E2WiEvufiAmWPPSEIeS2nvqU7SwShqAUrnhYqt4nAyBwY%2Bpl0pLJrcmQDs8duWhPMZePSCMvBcoDuamhPsnpLRj7LynL11qhDqqcnJE%2FbKI%2B1JM7Ko6vCpbmu5axENJQEm2Cr7kPx%2BluiFucVwvWEwA5IdssKiAztTTAWzNllH3QVm13XmZ1dwgnB1E0sAGCEaeEObO7G5CjAU3Zh6QuUsJ10sfXkTP2focqJN5KIB4ZMrvH3os51sDhpZ2dMxRNH0e7mV%2F128f2dOXenfNJrQnsRuQQFenGVblzyqQLkxn4Axd%2Bo7ujjdQNEEwBmAwWeuONoQvyBA1m2OqeW3RJvtW%2BrKX9V3iORbMwvPNternWBJr0IoBiL3MQhDHIrXYIdb%2BczmjFKIobKQPBZEcGYgiUK2kD8AbWX3VMNQG21bjtsGs%3D&lang=zh-CN");
         //webview.loadUrl("http://mumu.163.com/mhome.html");
+        webview.loadUrl("https://xy3d.163.com/client/?platform=andnie&channel=&url=//xy3d.163.com/client/update_android/20200325/32081_871189.html");
         Log.d(TAG, "button: end load....");
     }
 }
